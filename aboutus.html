@@ -30,6 +30,11 @@
         </div>
     </header>
 
+    <p>This viewport size is currently: <span id="viewport-size"></span>
+        <span id="breakpointName"></span></p>
+
+
+
     <div class="container">
         <div class="row">
             <div class="col">
@@ -41,7 +46,7 @@
 
 
         <div class="row row-content">
-            <div class="col-6">
+            <div class="col-sm-6">
                 <h3>Our Mission</h3>
                 <p>We present a curated database of the best campsites in the vast woods and backcountry of the
                     World Wide Web Wilderness. We increase access to adventure for the public while promoting safe
@@ -57,13 +62,17 @@
             <div class="col">
                 <h3>Community Partners</h3>
                 <h4>Bootstrap Outfitters <small>Outdoor Gear Specialists</small></h4>
-                <p class="d-none d-sm-block">Bootstrap Outfitters supplies you with the gear you need at prices you can't beat.</p>
+                <p class="d-none d-sm-block">Bootstrap Outfitters supplies you with the gear you need at prices you
+                    can't beat.</p>
                 <h4>Git Out Expeditions <small>Group Adventure Expeditions</small></h4>
-                <p class="d-none d-sm-block">Join Git Out Expeditions to explore new horizons with a group of other adventurers!</p>
+                <p class="d-none d-sm-block">Join Git Out Expeditions to explore new horizons with a group of other
+                    adventurers!</p>
                 <h4>Mongo Fly Shop <small>Your Neighborhood Fly Fishing Shop</small></h4>
-                <p class="d-none d-sm-block">Need a new fishing pole, a tacklebox, or flies of all kinds? Stop by Mongo Fly Shop.</p>
+                <p class="d-none d-sm-block">Need a new fishing pole, a tacklebox, or flies of all kinds? Stop by Mongo
+                    Fly Shop.</p>
                 <h4>Node Outdoor Apparel <small>Outdoor Clothes & Shoes</small></h4>
-                <p class="d-none d-sm-block">From polar fleeces to swimsuits, hiking boots to waders, a visit to Node will be sure to get you
+                <p class="d-none d-sm-block">From polar fleeces to swimsuits, hiking boots to waders, a visit to Node
+                    will be sure to get you
                     covered.</p>
             </div>
         </div>
@@ -102,6 +111,33 @@
     <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        // You do not need to change anything in this JS section.
+
+        viewportSizeSpan = document.getElementById("viewport-size");
+        breakpointNameSpan = document.getElementById("breakpointName");
+        let bp = "";
+
+        // Get and display viewport size on first load of document.
+        viewportSizeSpan.textContent = window.innerWidth;
+
+        function updateViewportBreakpointDisplay() {
+            // Display the breakpoint name 
+            viewportSizeSpan.textContent = window.innerWidth;
+            switch (true) {
+                case (window.innerWidth >= 1200): bp = "(XL)"; break;
+                case (window.innerWidth >= 992): bp = "(LG)"; break;
+                case (window.innerWidth >= 768): bp = "(MD)"; break;
+                case (window.innerWidth >= 576): bp = "(SM)"; break;
+                default: bp = "(Extra small)";
+            }
+            breakpointNameSpan.textContent = bp;
+        }
+
+        // Add event listener to run displaySize function whenever viewport is resized.
+        window.addEventListener("resize", updateViewportBreakpointDisplay);
+        </script>
 
 </body>
 
